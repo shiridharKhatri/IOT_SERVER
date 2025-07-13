@@ -8,7 +8,7 @@ const app = express();
 const server = http.createServer(app);
 
 const PORT = process.env.PORT || 3001;
-const ESP32_IP_ADDRESS = "http://192.168.16.105:80";
+const ESP32_IP_ADDRESS = "https://af00e6539d64.ngrok-free.app";
 
 let isRobotBusy = false;
 

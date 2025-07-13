@@ -17,7 +17,7 @@ app.use(express.json());
 
 const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: ["*", "https://orderfoodbot.netlify.app"],
     methods: ["GET", "POST"],
   },
 });

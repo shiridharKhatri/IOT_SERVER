@@ -8,16 +8,15 @@ const app = express();
 const server = http.createServer(app);
 
 const PORT = process.env.PORT || 3001;
-const ESP32_IP_ADDRESS = "https://af00e6539d64.ngrok-free.app";
+const ESP32_IP_ADDRESS = "http://192.168.16.105:80";
 
 let isRobotBusy = false;
-
 app.use(cors());
 app.use(express.json());
 
 const io = new Server(server, {
   cors: {
-    origin: ["*", "https://orderfoodbot.netlify.app"],
+    origin: "*",
     methods: ["GET", "POST"],
   },
 });
@@ -101,7 +100,7 @@ app.post("/status/completed", (req, res) => {
 app.get("/", (req,res)=>{
   res.status(200).json({
     message: "Welcome to the Intelligent Food Delivery Robot Admin Panel API"
-    
+
   })
 })
 server.listen(PORT, () => {

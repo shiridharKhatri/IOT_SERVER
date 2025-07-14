@@ -10,7 +10,7 @@ const server = http.createServer(app);
 
 const PORT = process.env.PORT || 3001;
 // IMPORTANT: Update this with your ESP32's current ngrok URL or local IP address
-const ESP32_IP_ADDRESS = "http://192.168.16.105:80";
+const ESP32_IP_ADDRESS = "https://df12c761b1fc.ngrok-free.app";
 
 let isRobotBusy = false;
 

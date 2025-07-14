@@ -53,9 +53,19 @@ app.post("/dispatch", async (req, res) => {
     isRobotBusy = true;
     io.emit("robotStatus", { isBusy: true });
 
-    await axios.post(`${ESP32_IP_ADDRESS}/dispatch`, null, {
-      params: { table: tableNumber },
-    });
+    // --- START: MODIFIED CODE ---
+    const qs = require('querystring');
+    await axios.post(
+      `${ESP32_IP_ADDRESS}/dispatch`,
+      qs.stringify({ table: tableNumber }), // Stringify the data
+      {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded' // Set the correct header
+        }
+      }
+    );
+    // --- END: MODIFIED CODE ---
+
     io.emit("orderStatusChange", {
       tableNumber: parseInt(tableNumber, 10),
       status: "waiting_for_food",
